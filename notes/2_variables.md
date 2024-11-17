@@ -11,6 +11,9 @@ Variable.get("my_variable") # this is read very often
 ```
 - will create a connection to the metadata database
 
+use keywords for hiding variables in UI and logs like passwd for password and api_key for api key, secret.
+change configuration sensitive_var_conn_names to add more variables
+
 ## Properly fetch your Variables
 - min_file_processing_intervals - will fetch the variable every x seconds
 - if you use the `Variable.get` outside dags or callbacks - they will be read from the metadata database every time the scheduler reads the files
