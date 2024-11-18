@@ -44,6 +44,8 @@
     - add multiple_outputs=True for multiple XCOMs - will also push dictionary
         - prevent push dictionary with do_xcom_push=False
     - or put  -> Dict[str, str] - with this doesn't seem to work for separate xcoms
+ 
+    - do_xcom_push=False will not put returned output in xcom.
 
 ## Group Tasks
 
