@@ -10,6 +10,7 @@
 - BranchPythonOperator, BranchSqlOperator, BranchDateTimeOperator, BranchDayOfWeekOperator
 - you always need to return a task_id
 - for missing days, you could use a Dummy Operator
+- you can also use ShortCircuitOperator to skip tasks based on a condition like day of the week.
 - for skiped tasks with one parent that ran you can use trigger_rule='none_failed_or_skipped' to prevent skip
 
 **Trigger Rules**
@@ -100,7 +101,7 @@ At Task level
     - it is recomanded to always have a timeout on dags otherwise will run forever
 - for the first run, depends_on_past is ignored
 - for backfills it is also ignored
-- the tasks are triggered iven if the past task was skipped
+- the tasks are triggered even if the past task was skipped
 
 **Wait for downstream** - commonly used with depends on past
 - (1)  [A] -> [B] -> [C]
@@ -116,7 +117,7 @@ At Task level
 - an Operator that waits for a condition to be true before moving to the next task
 - eg. FileSensor, DateTimeSensor, SqlSensor
 - for DateTimeSensor meaningfull arguments
-    - target_time - timedalta, can be templated
+    - target_time - timedelta, can be templated or execution_date.add(hours=9)
     - poke_interval - the time it will retry
     - mode
         - poke every poke_interval - will block a worker slot
